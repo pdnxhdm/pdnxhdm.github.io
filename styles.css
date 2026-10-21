@@ -3,3 +3,4 @@
 /* First experiment layout */
 .poisson-grid{grid-template-columns:minmax(230px,300px) minmax(320px,1fr)}.metrics-panel{display:block}.n-buttons button{appearance:none;-webkit-appearance:none;font-family:'DM Mono',monospace;line-height:1;background:#fff}.n-buttons button.active{color:#fff;background:var(--violet)}
 @media(max-width:720px){.poisson-grid{grid-template-columns:1fr}.n-buttons button{padding:12px 4px}}
+ .metrics-table .diff{font-size:12px;font-weight:700}.metrics-table .diff.good{color:#159447}.metrics-table .diff.warn{color:#d87900}.metrics-table .diff.bad{color:#d83a3a}.button.is-generating{opacity:.8;pointer-events:none}.button.is-ready{background:#159447}.spinner{display:inline-block;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
