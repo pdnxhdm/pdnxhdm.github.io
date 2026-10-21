@@ -1,0 +1,11 @@
+(function(){
+  const $=s=>document.querySelector(s), C=50;
+  const canvas=$('#queueChart'); if(!canvas)return;
+  function resize(){const d=devicePixelRatio||1,r=canvas.getBoundingClientRect();canvas.width=r.width*d;canvas.height=r.height*d;const x=canvas.getContext('2d');x.setTransform(d,0,0,d,0,0);return{x,w:r.width,h:r.height}}
+  function status(rho){const stable=rho<.8,border=rho<=1;$('#loadStatus').textContent=stable?'СТАБИЛЬНАЯ ЗОНА':border?'ПОГРАНИЧНАЯ ЗОНА':'ПЕРЕГРУЗКА';$('#statusDot').className='status-dot '+(stable?'stable':border?'borderline':'overload')}
+  function frame(data,upto,L){const c=resize(),max=Math.max(L,...data,5),x=c.x;x.clearRect(0,0,c.w,c.h);x.strokeStyle='#343439';x.lineWidth=1;x.beginPath();x.moveTo(38,10);x.lineTo(38,c.h-28);x.lineTo(c.w-8,c.h-28);x.stroke();const y=v=>c.h-28-(c.h-40)*v/max;x.strokeStyle='#85e5ad';x.setLineDash([5,5]);x.beginPath();x.moveTo(38,y(L));x.lineTo(c.w-8,y(L));x.stroke();x.setLineDash([]);if(!upto)return;x.strokeStyle='#ff7545';x.lineWidth=2;x.beginPath();data.slice(0,upto).forEach((v,i)=>{const px=38+(c.w-48)*i/Math.max(data.length-1,1);i?x.lineTo(px,y(v)):x.moveTo(px,y(v))});x.stroke()}
+  let data=[];
+  function update(){const rho=+$('input#rhoSlider').value,L=+$('input#lSlider').value;$('#qLambdaOut').textContent=(rho*C).toFixed(2);$('#rhoValue').textContent='ρ = '+rho.toFixed(2);status(rho);frame(data,data.length,L)}
+  function run(){const rho=+$('input#rhoSlider').value,L=+$('input#lSlider').value,n=+$('input#qN').value,l=rho*C;let q=0,served=0,util=0;data=[];for(let i=0;i<n;i++){let p=1,k=0,t=Math.exp(-l);do{k++;p*=Math.random()}while(p>t);const incoming=k-1,s=Math.min(q+incoming,C);served+=s;util+=s/C;q=Math.max(0,q+incoming-C);data.push(q)}const avg=data.reduce((a,b)=>a+b,0)/n;$('#qLambdaOut').textContent=l.toFixed(2);$('#peakQ').textContent=Math.max(...data);$('#avgQ').textContent=avg.toFixed(2);$('#positiveQ').textContent=(data.filter(v=>v>0).length/n*100).toFixed(1)+'%';$('#avgUtil').textContent=(util/n*100).toFixed(1)+'%';$('#aboveL').textContent=(data.filter(v=>v>L).length/n*100).toFixed(1)+'%';status(rho);let i=0,step=Math.max(1,Math.ceil(n/100));const tick=()=>{i=Math.min(n,i+step);frame(data,i,L);if(i<n)setTimeout(tick,35)};tick()}
+  $('#rhoSlider').oninput=update;$('#lSlider').oninput=update;$('#runQueue').onclick=run;update();
+})();
