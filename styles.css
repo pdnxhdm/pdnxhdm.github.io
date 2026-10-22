@@ -24,6 +24,11 @@
 @media(max-width:1100px){.variant-a-layout{grid-template-columns:1fr}.strategy-charts{grid-column:1/-1}}
 .strategy-optimal-chart{width:100%;max-width:none;margin:22px 0 0}
 .strategy-optimal-chart canvas{height:280px}
+.strategy-optimal-chart{min-width:0;padding:18px;background:linear-gradient(145deg,#202026,#1b1b20);border:1px solid #343439;border-radius:12px}
+.strategy-optimal-chart .chart-title{margin-bottom:14px}
+.strategy-controls .derived-cost{margin:4px 0 25px;padding:15px 16px;border:1px solid rgba(255,117,69,.3);border-radius:12px;background:linear-gradient(135deg,rgba(255,117,69,.13),rgba(255,117,69,.04));box-shadow:inset 0 1px rgba(255,255,255,.05)}
+.strategy-controls .derived-cost span{display:block;color:#aaa7a2;font:500 10px 'DM Mono';letter-spacing:.08em}
+.strategy-controls .derived-cost strong{display:block;margin-top:7px;color:var(--orange);font:500 25px 'DM Mono';letter-spacing:-.04em}
 @media(max-width:720px){.strategy-charts{grid-template-columns:1fr}.strategy-chart-card:first-child{grid-column:auto}}
 @media(max-width:720px){.variant-a-layout{grid-template-columns:1fr}}
 /* Итоговая сетка пункта 4: controls + S1, затем S2/S3 */
