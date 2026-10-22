@@ -22,6 +22,8 @@
 .strategy-charts{grid-column:1;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
 .strategy-chart-card:first-child{grid-column:1/-1}
 @media(max-width:1100px){.variant-a-layout{grid-template-columns:1fr}.strategy-charts{grid-column:1/-1}}
+.strategy-optimal-chart{width:100%;max-width:none;margin:22px 0 0}
+.strategy-optimal-chart canvas{height:280px}
 @media(max-width:720px){.strategy-charts{grid-template-columns:1fr}.strategy-chart-card:first-child{grid-column:auto}}
 @media(max-width:720px){.variant-a-layout{grid-template-columns:1fr}}
 /* Итоговая сетка пункта 4: controls + S1, затем S2/S3 */
