@@ -26,3 +26,16 @@
 @media(max-width:1100px){.variant-a-layout{grid-template-columns:1fr}.strategy-charts{grid-column:1/-1}.strategy-optimal-chart{width:100%}}
 @media(max-width:720px){.strategy-charts{grid-template-columns:1fr}.strategy-chart-card:first-child{grid-column:auto}}
 @media(max-width:720px){.variant-a-layout{grid-template-columns:1fr}}
+/* Итоговая сетка пункта 4: controls + S1, затем S2/S3 */
+.variant-a-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.strategy-charts{display:contents}
+.strategy-controls{grid-column:1;grid-row:1;min-height:100%}
+.strategy-chart-card{height:100%;min-height:430px}
+.strategy-chart-card:first-child{grid-column:2;grid-row:1}
+.strategy-chart-card:nth-child(2){grid-column:1;grid-row:2}
+.strategy-chart-card:nth-child(3){grid-column:2;grid-row:2}
+.strategy-optimal-chart{width:100%;max-width:none}
+@media(max-width:720px){
+  .variant-a-layout{grid-template-columns:1fr}
+  .strategy-controls,.strategy-chart-card:first-child,.strategy-chart-card:nth-child(2),.strategy-chart-card:nth-child(3){grid-column:1;grid-row:auto}
+}
