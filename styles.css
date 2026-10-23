@@ -1002,6 +1002,17 @@ div.strategy-optimal-chart canvas {
   margin-top: 12px;
   padding-top: 12px
 }
+.dependent-results {
+  margin-top: 22px;
+}
+.dependent-results .metrics-table td,
+.dependent-results .metrics-table th {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.dependent-results .metrics-table td:not(:first-child) {
+  font-size: 13px;
+}
 .dependent-chart-panel {
   display: flex;
   flex-direction: column;
