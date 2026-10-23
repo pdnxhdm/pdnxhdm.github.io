@@ -990,7 +990,7 @@ div.strategy-optimal-chart canvas {
 /* The dependent-flow plot fills its card instead of leaving unused canvas space. */
 .dependent-grid {
   grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
-  align-items: stretch
+  align-items: start
 }
 .dependent-grid .controls {
   padding: 18px
@@ -1013,10 +1013,38 @@ div.strategy-optimal-chart canvas {
 .dependent-results .metrics-table td:not(:first-child) {
   font-size: 13px;
 }
+.dependent-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+.dependent-metrics-table {
+  table-layout: fixed;
+  font-variant-numeric: tabular-nums;
+}
+.dependent-metrics-table th,
+.dependent-metrics-table td {
+  white-space: nowrap;
+}
+.dependent-metrics-table th:first-child,
+.dependent-metrics-table td:first-child {
+  width: 20%;
+}
+.dependent-metrics-table th:nth-child(2),
+.dependent-metrics-table td:nth-child(2) {
+  width: 22%;
+}
+.dependent-metrics-table th:nth-child(3),
+.dependent-metrics-table td:nth-child(3) {
+  width: 27%;
+}
+.dependent-metrics-table th:nth-child(4),
+.dependent-metrics-table td:nth-child(4) {
+  width: 31%;
+}
 .dependent-chart-panel {
   display: flex;
   flex-direction: column;
-  min-height: 420px
+  min-height: 340px
 }
 .dependent-chart-panel canvas {
   flex: 1;
@@ -1070,6 +1098,9 @@ div.strategy-optimal-chart canvas {
   }
   .dependent-chart-panel {
     min-height: 360px
+  }
+  .dependent-metrics-table {
+    min-width: 580px;
   }
   .strategy-controls,
   .strategy-chart-card {

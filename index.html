@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">λ</span><span>QUEUE<span class="muted">LAB</span></span></a><nav><a href="#poisson">01 Поток</a><a href="#queue">02 Очередь</a><a href="#dependent">03 Зависимость</a><a href="#strategy">04 Стратегии</a></nav><button class="menu" aria-label="Открыть меню">☰</button></header>
@@ -36,17 +36,19 @@
       </div>
       <div class="panel metrics-panel dependent-results">
         <div class="metrics-title">ТЕОРИЯ И РЕЗУЛЬТАТЫ МОДЕЛИРОВАНИЯ <span>N = <b>500</b></span></div>
-        <table class="metrics-table">
-          <thead><tr><th>Показатель</th><th>Теория</th><th>Моделирование</th><th>Разница</th></tr></thead>
-          <tbody>
-            <tr><td>E[X]</td><td id="theoryMeanX">—</td><td id="empMeanX">—</td><td id="diffMeanX" class="diff">—</td></tr>
-            <tr><td>E[Y]</td><td id="theoryMeanY">—</td><td id="empMeanY">—</td><td id="diffMeanY" class="diff">—</td></tr>
-            <tr><td>D(X)</td><td id="theoryVarX">—</td><td id="empVarX">—</td><td id="diffVarX" class="diff">—</td></tr>
-            <tr><td>D(Y)</td><td id="theoryVarY">—</td><td id="empVarY">—</td><td id="diffVarY" class="diff">—</td></tr>
-            <tr><td>Cov(X,Y)</td><td id="theoryCov">—</td><td id="empCov">—</td><td id="diffCov" class="diff">—</td></tr>
-            <tr><td>Corr(X,Y)</td><td id="theoryCorr">—</td><td id="corr">—</td><td id="diffCorr" class="diff">—</td></tr>
-          </tbody>
-        </table>
+        <div class="dependent-table-wrap">
+          <table class="metrics-table dependent-metrics-table">
+            <thead><tr><th>Показатель</th><th>Теория</th><th>Моделирование</th><th>Разница</th></tr></thead>
+            <tbody>
+              <tr><td>E[X]</td><td id="theoryMeanX">—</td><td id="empMeanX">—</td><td id="diffMeanX" class="diff">—</td></tr>
+              <tr><td>E[Y]</td><td id="theoryMeanY">—</td><td id="empMeanY">—</td><td id="diffMeanY" class="diff">—</td></tr>
+              <tr><td>D(X)</td><td id="theoryVarX">—</td><td id="empVarX">—</td><td id="diffVarX" class="diff">—</td></tr>
+              <tr><td>D(Y)</td><td id="theoryVarY">—</td><td id="empVarY">—</td><td id="diffVarY" class="diff">—</td></tr>
+              <tr><td>Cov(X,Y)</td><td id="theoryCov">—</td><td id="empCov">—</td><td id="diffCov" class="diff">—</td></tr>
+              <tr><td>Corr(X,Y)</td><td id="theoryCorr">—</td><td id="corr">—</td><td id="diffCorr" class="diff">—</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
     <section class="lab-section dark wrap" id="strategy">
