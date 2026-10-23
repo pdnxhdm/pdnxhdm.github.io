@@ -48,7 +48,7 @@
     for (let k = 0; k <= maxK; k += 1) {
       const center = x(k + 0.5);
       const empiricalY = y(empirical[k]);
-      context.fillStyle = "#7257ff";
+      context.fillStyle = "#376ed2";
       context.fillRect(
         center - barWidth - 1,
         empiricalY,
@@ -57,7 +57,7 @@
       );
 
       const theoreticalY = y(theoretical[k]);
-      context.fillStyle = "#ff7545";
+      context.fillStyle = "#19a4ad";
       context.fillRect(
         center + 1,
         theoreticalY,

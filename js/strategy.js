@@ -79,7 +79,7 @@
 
     const drawFrame = (progress) => {
       context.clearRect(0, 0, width, height);
-      context.strokeStyle = "#414149";
+      context.strokeStyle = "#d7e1ef";
       context.lineWidth = 1;
       context.beginPath();
       context.moveTo(left, top);
@@ -88,7 +88,7 @@
       context.stroke();
 
       const visibleCount = Math.max(2, Math.floor(queues.length * progress));
-      context.strokeStyle = "#ff7545";
+      context.strokeStyle = "#376ed2";
       context.lineWidth = 1.7;
       context.beginPath();
 
@@ -101,7 +101,7 @@
       context.stroke();
 
       context.setLineDash([6, 5]);
-      context.strokeStyle = "#85e5ad";
+      context.strokeStyle = "#19a4ad";
       context.lineWidth = 2;
       context.beginPath();
       context.moveTo(left, y(criticalLevel));
@@ -176,7 +176,7 @@
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.clearRect(0, 0, width, height);
 
-    context.strokeStyle = "#414149";
+    context.strokeStyle = "#d7e1ef";
     context.lineWidth = 1;
     context.beginPath();
     context.moveTo(left, top);
@@ -184,7 +184,7 @@
     context.lineTo(width - right, height - bottom);
     context.stroke();
 
-    context.strokeStyle = "#ff7545";
+    context.strokeStyle = "#376ed2";
     context.lineWidth = 2;
     context.beginPath();
     points.forEach(([gamma, threshold], index) => {

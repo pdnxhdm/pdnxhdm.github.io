@@ -7,8 +7,16 @@
   <title>Queue Lab · Моделирование случайного потока</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="theme.css?v=2" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">λ</span><span>QUEUE<span class="muted">LAB</span></span></a><nav><a href="#poisson">01 Поток</a><a href="#queue">02 Очередь</a><a href="#dependent">03 Зависимость</a><a href="#strategy">04 Стратегии</a></nav><button class="menu" aria-label="Открыть меню">☰</button></header>
@@ -83,5 +91,6 @@
   <script defer src="js/queue.js?v=2"></script>
   <script defer src="js/dependent.js?v=3"></script>
   <script defer src="js/strategy.js"></script>
+  <script defer src="js/presentation.js?v=2"></script>
 </body>
 </html>

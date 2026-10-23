@@ -101,7 +101,7 @@
     const chart = clearChart("dependentChart");
     const maxValue = Math.max(...xValues, ...yValues, 8);
     axes(chart, maxValue, maxValue);
-    drawDots(chart, points, "#7257ff", maxValue, maxValue);
+    drawDots(chart, points, "#376ed2", maxValue, maxValue);
   }
 
   $("#runDependent").addEventListener("click", simulateDependentFlows);

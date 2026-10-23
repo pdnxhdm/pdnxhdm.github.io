@@ -58,7 +58,7 @@
     context.clearRect(0, 0, width, height);
 
     const y = (value) => height - 28 - ((height - 40) * value) / fixedMax;
-    context.strokeStyle = "#343439";
+    context.strokeStyle = "#d7e1ef";
     context.lineWidth = 1;
     context.beginPath();
     context.moveTo(38, 10);
@@ -67,7 +67,7 @@
     context.stroke();
 
     if (visibleCount > 0) {
-      context.strokeStyle = "#ff7545";
+      context.strokeStyle = "#376ed2";
       context.lineWidth = 2;
       context.beginPath();
 
@@ -79,7 +79,7 @@
       context.stroke();
     }
 
-    context.strokeStyle = "#85e5ad";
+    context.strokeStyle = "#19a4ad";
     context.lineWidth = 2;
     context.setLineDash([5, 5]);
     context.beginPath();
@@ -153,7 +153,7 @@
     element.height = height * ratio;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.clearRect(0, 0, width, height);
-    context.strokeStyle = "#343439";
+    context.strokeStyle = "#d7e1ef";
     context.lineWidth = 1;
     context.beginPath();
     context.moveTo(38, 10);
@@ -173,7 +173,7 @@
       const targetCount = Math.max(1, Math.floor(size * progress));
 
       if (targetCount > drawnCount) {
-        context.strokeStyle = "#ff7545";
+        context.strokeStyle = "#376ed2";
         context.lineWidth = 2;
         context.lineCap = "round";
         context.lineJoin = "round";
@@ -190,7 +190,7 @@
       }
 
       // Redraw the threshold last so it always stays above the queue trace.
-      context.strokeStyle = "#85e5ad";
+        context.strokeStyle = "#19a4ad";
       context.lineWidth = 2;
       context.setLineDash([5, 5]);
       context.beginPath();
