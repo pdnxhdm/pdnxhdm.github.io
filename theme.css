@@ -236,8 +236,8 @@ nav a:hover,
   top: calc(100% + 10px);
   right: 0;
   left: auto;
-  width: 150% !important;
-  max-width: 150% !important;
+  width: 620px !important;
+  max-width: calc(100vw - 32px) !important;
   max-height: min(68vh, 620px);
   box-sizing: border-box;
   overflow: auto;
