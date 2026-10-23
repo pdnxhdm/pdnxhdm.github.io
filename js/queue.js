@@ -1,7 +1,7 @@
 (() => {
   const { $ } = window.QueueLab;
   const capacity = 50;
-  let animationTimer = 0;
+  let animationFrame = 0;
   let runNumber = 0;
 
   function poissonForQueue(lambda) {
@@ -92,13 +92,17 @@
   function updateControls() {
     const rho = Number($("#rhoSlider").value);
     const level = Number($("#lSlider").value);
+    if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+    runNumber += 1;
     updateLoadStatus(rho);
+    $("#lOut").textContent = String(level);
     drawQueue([], 0, level, Math.max(5, level));
   }
 
   function renderMetrics(data, utilization, criticalLevel) {
     const size = data.length;
-    $("#peakQ").textContent = Math.max(...data);
+    $("#peakQ").textContent = data.reduce((maximum, value) => Math.max(maximum, value), 0);
     $("#avgQ").textContent = (
       data.reduce((sum, value) => sum + value, 0) / size
     ).toFixed(2);
@@ -113,7 +117,7 @@
 
   function runQueue() {
     const currentRun = ++runNumber;
-    if (animationTimer) window.clearTimeout(animationTimer);
+    if (animationFrame) window.cancelAnimationFrame(animationFrame);
 
     const rho = Number($("#rhoSlider").value);
     const criticalLevel = Number($("#lSlider").value);
@@ -124,36 +128,85 @@
     const data = [];
     let queue = 0;
     let utilization = 0;
+    let peakQueue = 0;
 
     for (let index = 0; index < size; index += 1) {
       const arrivals = poissonForQueue(arrivalRate);
       const served = Math.min(queue + arrivals, capacity);
       utilization += served / capacity;
       queue = Math.max(0, queue + arrivals - capacity);
+      peakQueue = Math.max(peakQueue, queue);
       data.push(queue);
     }
 
-    const fixedMax = Math.max(criticalLevel, ...data, 5);
-    const frameSize = Math.max(1, Math.ceil(size / 100));
-    let visibleCount = 0;
-    drawQueue(data, 0, criticalLevel, fixedMax);
+    const fixedMax = Math.max(criticalLevel, peakQueue, 5);
+    const element = $("#queueChart");
+    const ratio = window.devicePixelRatio || 1;
+    const bounds = element.getBoundingClientRect();
+    const width = bounds.width;
+    const height = bounds.height;
+    const context = element.getContext("2d");
+    const y = (value) => height - 28 - ((height - 40) * value) / fixedMax;
+    const x = (index) => 38 + ((width - 48) * index) / Math.max(size - 1, 1);
 
-    function drawNextFrame() {
+    element.width = width * ratio;
+    element.height = height * ratio;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    context.clearRect(0, 0, width, height);
+    context.strokeStyle = "#343439";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(38, 10);
+    context.lineTo(38, height - 28);
+    context.lineTo(width - 8, height - 28);
+    context.stroke();
+
+    let drawnCount = 0;
+    const duration = 1200;
+    let startTime = 0;
+
+    function drawNextFrame(time) {
       if (currentRun !== runNumber) return;
+      if (!startTime) startTime = time;
 
-      visibleCount = Math.min(size, visibleCount + frameSize);
-      drawQueue(data, visibleCount, criticalLevel, fixedMax);
+      const progress = Math.min(1, (time - startTime) / duration);
+      const targetCount = Math.max(1, Math.floor(size * progress));
 
-      if (visibleCount < size) {
-        animationTimer = window.setTimeout(drawNextFrame, 30);
+      if (targetCount > drawnCount) {
+        context.strokeStyle = "#ff7545";
+        context.lineWidth = 2;
+        context.beginPath();
+
+        for (let index = drawnCount; index < targetCount; index += 1) {
+          index === 0
+            ? context.moveTo(x(index), y(data[index]))
+            : context.lineTo(x(index), y(data[index]));
+        }
+
+        context.stroke();
+        drawnCount = targetCount;
+      }
+
+      // Redraw the threshold last so it always stays above the queue trace.
+      context.strokeStyle = "#85e5ad";
+      context.lineWidth = 2;
+      context.setLineDash([5, 5]);
+      context.beginPath();
+      context.moveTo(38, y(criticalLevel));
+      context.lineTo(width - 8, y(criticalLevel));
+      context.stroke();
+      context.setLineDash([]);
+
+      if (progress < 1) {
+        animationFrame = window.requestAnimationFrame(drawNextFrame);
         return;
       }
 
       renderMetrics(data, utilization, criticalLevel);
-      animationTimer = 0;
+      animationFrame = 0;
     }
 
-    drawNextFrame();
+    animationFrame = window.requestAnimationFrame(drawNextFrame);
   }
 
   document.querySelectorAll("#qNButtons button").forEach((button) => {

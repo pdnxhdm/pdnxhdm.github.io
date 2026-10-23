@@ -36,7 +36,6 @@
       yValues.reduce((sum, value) => sum + (value - meanY) ** 2, 0) / sampleSize;
     const correlation = covariance / Math.sqrt(varianceX * varianceY);
 
-    $("#theoryCov").textContent = format(lambdaC);
     $("#empCov").textContent = format(covariance);
     $("#corr").textContent = format(correlation);
 

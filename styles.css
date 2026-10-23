@@ -588,21 +588,12 @@ canvas {
 .metrics-table .diff.bad {
   color: #d83a3a
 }
-.button.is-generating {
-  opacity: .8;
-  pointer-events: none
-}
 .button.is-ready {
   background: #159447
 }
-.spinner {
-  display: inline-block;
-  animation: spin .7s linear infinite
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg)
-  }
+#runPoisson {
+  min-height: 52px;
+  white-space: nowrap
 }
 
  .queue-grid {
@@ -968,4 +959,77 @@ div.strategy-optimal-chart canvas {
 
 #strategy .status-box {
   display: none
+}
+
+/* The dependent-flow plot fills its card instead of leaving unused canvas space. */
+.dependent-grid {
+  grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
+  align-items: stretch
+}
+.dependent-chart-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 520px
+}
+.dependent-chart-panel canvas {
+  flex: 1;
+  min-height: 0;
+  height: auto
+}
+
+/* Keep the controls and all three strategy cards at a compact, equal height. */
+.fixed-params {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px 12px
+}
+.strategy-controls {
+  box-sizing: border-box;
+  height: 430px;
+  min-height: 430px;
+  padding: 18px
+}
+.strategy-controls label {
+  margin-bottom: 14px
+}
+.strategy-controls .derived-cost {
+  margin: 0 0 14px;
+  padding: 10px 14px
+}
+.strategy-controls .derived-cost strong {
+  margin-top: 5px;
+  font-size: 21px
+}
+.strategy-controls .button.full {
+  min-height: 50px;
+  margin-top: 0
+}
+.strategy-controls .strategy-note {
+  margin-top: 10px
+}
+.strategy-chart-card {
+  box-sizing: border-box;
+  height: 430px;
+  min-height: 430px
+}
+.strategy-chart-card canvas {
+  height: 220px
+}
+
+@media(max-width:720px) {
+  .dependent-grid {
+    grid-template-columns: 1fr
+  }
+  .dependent-chart-panel {
+    min-height: 400px
+  }
+  .strategy-controls,
+  .strategy-chart-card {
+    height: auto;
+    min-height: 0
+  }
+  .strategy-chart-card canvas {
+    height: 220px
+  }
 }
