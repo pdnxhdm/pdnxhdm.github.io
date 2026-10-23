@@ -6,7 +6,7 @@
     ],
     [
       "#queue .section-head p",
-      String.raw`<span class="formula-item">$Q_n=\max(0,Q_{n-1}+X_n-c)$</span><span class="formula-item">$\rho=\lambda/c$</span><span class="formula-item">$c=50$</span>`,
+      String.raw`<span class="formula-item">$Q_n=\max(0,Q_{n-1}+X_n-c)$</span><span class="formula-item">$\rho=\lambda/c$</span>`,
     ],
     [
       "#dependent .section-head p",
@@ -39,8 +39,9 @@
     targets.push(paragraph);
 
     const sectionHead = paragraph.closest(".section-head");
+    const sectionId = paragraph.closest(".lab-section")?.id;
     const details = document.createElement("details");
-    details.className = "formula-disclosure";
+    details.className = `formula-disclosure formula-disclosure-${sectionId}`;
     const trigger = document.createElement("summary");
     trigger.textContent = "Формулы модели";
     details.append(trigger, paragraph);

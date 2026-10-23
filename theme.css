@@ -250,6 +250,26 @@ nav a:hover,
   transform: none;
 }
 
+.formula-disclosure-poisson .math-summary {
+  width: 440px !important;
+  max-width: min(440px, calc(100vw - 32px)) !important;
+}
+
+.formula-disclosure-queue .math-summary {
+  width: 480px !important;
+  max-width: min(480px, calc(100vw - 32px)) !important;
+}
+
+.formula-disclosure-dependent .math-summary {
+  width: 720px !important;
+  max-width: min(720px, calc(100vw - 32px)) !important;
+}
+
+.formula-disclosure-strategy .math-summary {
+  width: 620px !important;
+  max-width: min(620px, calc(100vw - 32px)) !important;
+}
+
 .section-head h2 {
   font-size: clamp(30px, 4vw, 48px);
 }
