@@ -588,6 +588,32 @@ canvas {
 .metrics-table .diff.bad {
   color: #d83a3a
 }
+.poisson-distribution-panel {
+  margin-top: 22px;
+  min-height: 380px;
+}
+.poisson-distribution-panel canvas {
+  height: 300px;
+}
+.distribution-axis-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 8px 0 38px;
+  color: var(--muted);
+  font: 500 10px 'DM Mono',monospace;
+}
+@media(max-width:720px) {
+  .poisson-distribution-panel {
+    min-height: 320px;
+  }
+  .poisson-distribution-panel canvas {
+    height: 240px;
+  }
+  .distribution-axis-label {
+    font-size: 9px;
+  }
+}
 .button.is-ready {
   background: #159447
 }
