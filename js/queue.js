@@ -175,12 +175,14 @@
       if (targetCount > drawnCount) {
         context.strokeStyle = "#ff7545";
         context.lineWidth = 2;
+        context.lineCap = "round";
+        context.lineJoin = "round";
         context.beginPath();
+        const firstPoint = drawnCount === 0 ? 0 : drawnCount - 1;
+        context.moveTo(x(firstPoint), y(data[firstPoint]));
 
-        for (let index = drawnCount; index < targetCount; index += 1) {
-          index === 0
-            ? context.moveTo(x(index), y(data[index]))
-            : context.lineTo(x(index), y(data[index]));
+        for (let index = Math.max(1, drawnCount); index < targetCount; index += 1) {
+          context.lineTo(x(index), y(data[index]));
         }
 
         context.stroke();

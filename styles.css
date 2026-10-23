@@ -966,10 +966,20 @@ div.strategy-optimal-chart canvas {
   grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
   align-items: stretch
 }
+.dependent-grid .controls {
+  padding: 18px
+}
+.dependent-grid .controls label {
+  margin-bottom: 16px
+}
+.dependent-grid .controls .metrics {
+  margin-top: 12px;
+  padding-top: 12px
+}
 .dependent-chart-panel {
   display: flex;
   flex-direction: column;
-  min-height: 520px
+  min-height: 420px
 }
 .dependent-chart-panel canvas {
   flex: 1;
@@ -1022,7 +1032,7 @@ div.strategy-optimal-chart canvas {
     grid-template-columns: 1fr
   }
   .dependent-chart-panel {
-    min-height: 400px
+    min-height: 360px
   }
   .strategy-controls,
   .strategy-chart-card {
