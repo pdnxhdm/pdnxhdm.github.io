@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=9" />
-  <link rel="stylesheet" href="theme.css?v=15" />
+  <link rel="stylesheet" href="theme.css?v=16" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
@@ -37,8 +37,8 @@
           <button class="button primary full" id="runDependent">Смоделировать X / Y <span>↗</span></button>
         </div>
         <div class="panel chart-panel dependent-chart-panel">
-          <div class="chart-title"><span>Scatter plot X / Y</span><span class="legend"><i class="dot violet"></i> наблюдения</span></div>
-          <canvas id="dependentChart"></canvas>
+          <div class="chart-title"><span>Совместное распределение X и Y</span><span class="legend"><i class="density-swatch"></i> частота пары <i class="mean-swatch"></i> теоретическое среднее</span></div>
+          <canvas id="dependentChart" role="img" aria-label="Карта частот совместного распределения X и Y; бирюзовый маркер показывает теоретические средние"></canvas>
         </div>
       </div>
       <div class="panel metrics-panel dependent-results">
@@ -87,7 +87,7 @@
   <script defer src="js/core.js"></script>
   <script defer src="js/poisson.js?v=3"></script>
   <script defer src="js/queue.js?v=2"></script>
-  <script defer src="js/dependent.js?v=3"></script>
+  <script defer src="js/dependent.js?v=4"></script>
   <script defer src="js/strategy.js"></script>
   <script defer src="js/presentation.js?v=11"></script>
 </body>

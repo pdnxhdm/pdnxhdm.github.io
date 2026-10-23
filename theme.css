@@ -604,6 +604,35 @@ div.strategy-optimal-chart .chart-title {
   box-shadow: var(--shadow);
 }
 
+.dependent-chart-panel {
+  min-height: 470px;
+}
+
+.dependent-chart-panel canvas {
+  min-height: 390px;
+}
+
+.density-swatch {
+  display: inline-block;
+  width: 34px;
+  height: 9px;
+  margin: 0 5px 0 12px;
+  border-radius: 99px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, #e5effc, #3067be);
+}
+
+.mean-swatch {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin: 0 5px 0 12px;
+  border: 2px solid #19a4ad;
+  border-radius: 50%;
+  background: #fff;
+  vertical-align: middle;
+}
+
 .strategy-optimal-chart .chart-title,
 .strategy-optimal-chart .legend {
   color: #274564;
@@ -799,6 +828,14 @@ div.strategy-optimal-chart .chart-title {
 
   .queue-metrics {
     gap: 8px;
+  }
+
+  .dependent-chart-panel {
+    min-height: 420px;
+  }
+
+  .dependent-chart-panel canvas {
+    min-height: 340px;
   }
 }
 
