@@ -2,26 +2,25 @@
   const summaries = [
     [
       "#poisson .section-head p",
-      String.raw`$X_n\sim\mathrm{Pois}(\lambda)$ · $\mathsf E[X_n]=\mathsf D[X_n]=\lambda$ · $\mathsf E[X_n^2]=\lambda+\lambda^2$`,
+      String.raw`<span class="formula-item">$X_n\sim\mathrm{Pois}(\lambda)$</span><span class="formula-item">$\mathsf E[X_n]=\mathsf D[X_n]=\lambda$</span><span class="formula-item">$\mathsf E[X_n^2]=\lambda+\lambda^2$</span>`,
     ],
     [
       "#queue .section-head p",
-      String.raw`$Q_n=\max(0,Q_{n-1}+X_n-c)$ · $\rho=\lambda/c$ · $c=50$`,
+      String.raw`<span class="formula-item">$Q_n=\max(0,Q_{n-1}+X_n-c)$</span><span class="formula-item">$\rho=\lambda/c$</span><span class="formula-item">$c=50$</span>`,
     ],
     [
       "#dependent .section-head p",
-      String.raw`$X=A+C,\quad Y=B+C$ · $\mathsf E[X]=\lambda_A+\lambda_C$ · $\mathsf E[Y]=\lambda_B+\lambda_C$<br>$\mathsf D[X]=\lambda_A+\lambda_C$ · $\mathsf D[Y]=\lambda_B+\lambda_C$ · $\mathrm{Cov}(X,Y)=\lambda_C$<br>$\mathrm{Corr}(X,Y)=\dfrac{\lambda_C}{\sqrt{(\lambda_A+\lambda_C)(\lambda_B+\lambda_C)}}$`,
+      String.raw`<span class="formula-item">$X=A+C,\quad Y=B+C$</span><span class="formula-item">$\mathsf E[X]=\lambda_A+\lambda_C$</span><span class="formula-item">$\mathsf E[Y]=\lambda_B+\lambda_C$</span><span class="formula-item">$\mathsf D[X]=\lambda_A+\lambda_C$</span><span class="formula-item">$\mathsf D[Y]=\lambda_B+\lambda_C$</span><span class="formula-item">$\mathrm{Cov}(X,Y)=\lambda_C$</span><span class="formula-item">$\mathrm{Corr}(X,Y)=\dfrac{\lambda_C}{\sqrt{(\lambda_A+\lambda_C)(\lambda_B+\lambda_C)}}$</span>`,
     ],
     [
       "#strategy .section-head p",
-      String.raw`$c_n=c+\Delta c\,I_n$ · $I_n=\mathbf1\{Q_{n-1}\ge q\}$ · $\gamma=b/a$<br>$\overline C_N=\dfrac1N\sum_{n=1}^N(aQ_{n-1}+bI_n)$`,
+      String.raw`<span class="formula-item">$c_n=c+\Delta c\,I_n$</span><span class="formula-item">$I_n=\mathbf1\{Q_{n-1}\ge q\}$</span><span class="formula-item">$\gamma=b/a$</span><span class="formula-item">$\overline C_N=\dfrac1N\sum_{n=1}^N(aQ_{n-1}+bI_n)$</span>`,
     ],
   ];
 
   const targets = [];
   const headings = [
     [".hero h1", "Расчёты<br /><em>случайных потоков.</em>"],
-    ["#theory .intro-copy h2", "Обозначения<br />и модели."],
     ["#poisson .section-head h2", "Распределение<br /><em>Пуассона.</em>"],
     ["#queue .section-head h2", "Динамика<br /><em>очереди.</em>"],
     ["#dependent .section-head h2", "Зависимые<br /><em>потоки.</em>"],
@@ -38,6 +37,14 @@
     paragraph.classList.add("math-summary");
     paragraph.innerHTML = markup;
     targets.push(paragraph);
+
+    const sectionHead = paragraph.closest(".section-head");
+    const details = document.createElement("details");
+    details.className = "formula-disclosure";
+    const trigger = document.createElement("summary");
+    trigger.textContent = "Формулы модели";
+    details.append(trigger, paragraph);
+    sectionHead.append(details);
   });
 
   const lead = document.querySelector(".hero .lead");
@@ -45,12 +52,8 @@
     lead.textContent = "Теория и моделирование: сравните формулы с результатами эксперимента.";
   }
 
-  const intro = document.querySelector("#theory .intro-copy p");
-  if (intro) {
-    intro.innerHTML =
-      String.raw`$X_n$ — заявки за шаг · $Q_n$ — очередь · $\lambda$ — интенсивность · $c$ — мощность`;
-    targets.push(intro);
-  }
+  document.querySelector(".hero-grid")?.remove();
+  document.querySelector(".hero .text-link")?.remove();
 
   if (window.MathJax?.typesetPromise && targets.length) {
     window.MathJax.typesetPromise(targets).catch((error) => {

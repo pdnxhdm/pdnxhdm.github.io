@@ -90,13 +90,6 @@
     setDifference("diffVar", lambda, variance);
     setDifference("diffSecond", lambda ** 2 + lambda, secondMoment);
 
-    generateButton.classList.add("is-ready");
-    generateButton.innerHTML = "Выборка сгенерирована <span>✓</span>";
-
-    window.setTimeout(() => {
-      generateButton.classList.remove("is-ready");
-      generateButton.innerHTML = "Сгенерировать поток <span>↗</span>";
-    }, 600);
   }
 
   generateButton.addEventListener("click", generateSample);
