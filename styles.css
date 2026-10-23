@@ -517,6 +517,30 @@ canvas {
   border-collapse: collapse;
   font-size: 12px
 }
+.poisson-metrics-table {
+  table-layout: fixed;
+  font-variant-numeric: tabular-nums;
+}
+.poisson-metrics-table th,
+.poisson-metrics-table td {
+  white-space: nowrap;
+}
+.poisson-metrics-table th:first-child,
+.poisson-metrics-table td:first-child {
+  width: 20%;
+}
+.poisson-metrics-table th:nth-child(2),
+.poisson-metrics-table td:nth-child(2) {
+  width: 20%;
+}
+.poisson-metrics-table th:nth-child(3),
+.poisson-metrics-table td:nth-child(3) {
+  width: 25%;
+}
+.poisson-metrics-table th:nth-child(4),
+.poisson-metrics-table td:nth-child(4) {
+  width: 35%;
+}
 .metrics-table th,.metrics-table td {
   text-align: right;
   padding: 12px 8px;
